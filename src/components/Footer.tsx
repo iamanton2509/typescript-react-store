@@ -1,37 +1,47 @@
 import {NavLink} from 'react-router-dom';
 
+import facebook from './../images/socials/facebook-light.svg';
+import instagram from './../images/socials/instagram-light.svg';
+import tiktok from './../images/socials/tiktok-light.svg';
+import twitter from './../images/socials/twitter-light.svg';
+
+import facebookOriginal from './../images/socials/facebook-original.svg';
+import instagramOriginal from './../images/socials/instagram-original.svg';
+import tiktokOriginal from './../images/socials/tiktok-original.svg';
+import twitterOriginal from './../images/socials/twitter-original.svg';
+
 const Footer = () => {
     const changeIcon: React.MouseEventHandler<HTMLImageElement> = (e) => {
         const target = e.target as HTMLImageElement;
         switch (target.getAttribute('src')) {
-            case './../images/socials/facebook-light.svg':
-                target.setAttribute('src', './../../images/socials/facebook-original.svg');
+            case facebook:
+                target.setAttribute('src', facebookOriginal);
                 break;
-            case './../images/socials/instagram-light.svg':
-                target.setAttribute('src', './../../images/socials/instagram-original.svg');
+            case instagram:
+                target.setAttribute('src', instagramOriginal);
                 break;
-            case './../images/socials/tiktok-light.svg':
-                target.setAttribute('src', './../../images/socials/tiktok-original.svg');
+            case tiktok:
+                target.setAttribute('src', tiktokOriginal);
                 break;
-            case './../images/socials/twitter-light.svg':
-                target.setAttribute('src', './../../images/socials/twitter-original.svg');
+            case twitter:
+                target.setAttribute('src', twitterOriginal);
         }
     }
 
     const changeToDefaultIcons: React.MouseEventHandler<HTMLImageElement> = (e) => {
         const target = e.target as HTMLImageElement;
         switch (target.getAttribute('src')) {
-            case './../../images/socials/facebook-original.svg':
-                target.setAttribute('src', './../images/socials/facebook-light.svg');
+            case facebookOriginal:
+                target.setAttribute('src', facebook);
                 break;
-            case './../../images/socials/instagram-original.svg':
-                target.setAttribute('src', './../images/socials/instagram-light.svg');
+            case instagramOriginal:
+                target.setAttribute('src', instagram);
                 break;
-            case './../../images/socials/tiktok-original.svg':
-                target.setAttribute('src', './../images/socials/tiktok-light.svg');
+            case tiktokOriginal:
+                target.setAttribute('src', tiktok);
                 break;
-            case './../../images/socials/twitter-original.svg':
-                target.setAttribute('src', './../../images/socials/twitter-original.svg');
+            case twitterOriginal:
+                target.setAttribute('src', twitter);
         }
     }
 
@@ -53,10 +63,10 @@ const Footer = () => {
                     </li>
                 </ul>
                 <ul className="footer-socials">
-                    <li><a href="https://www.instagram.com/" target="_blank"><img onMouseOver={changeIcon} onMouseOut={changeToDefaultIcons} src='./../../images/socials/instagram-light.svg' alt="Instagram"/></a></li>
-                    <li><a href="https://www.facebook.com/" target="_blank"><img onMouseOver={changeIcon} onMouseOut={changeToDefaultIcons} src='./../../images/socials/facebook-light.svg' alt="Facebook"/></a></li>
-                    <li><a href="https://www.tiktok.com/" target="_blank"><img onMouseOver={changeIcon} onMouseOut={changeToDefaultIcons} src='./../../images/socials/tiktok-light.svg' alt="TikTok"/></a></li>
-                    <li><a href="https://twitter.com/" target="_blank"><img onMouseOver={changeIcon} onMouseOut={changeToDefaultIcons} src='./../../images/socials/twitter-light.svg' alt="Twitter"/></a></li>
+                    <li><a href="https://www.instagram.com/" target="_blank"><img onMouseOver={changeIcon} onMouseOut={changeToDefaultIcons} src={instagram} alt="Instagram"/></a></li>
+                    <li><a href="https://www.facebook.com/" target="_blank"><img onMouseOver={changeIcon} onMouseOut={changeToDefaultIcons} src={facebook} alt="Facebook"/></a></li>
+                    <li><a href="https://www.tiktok.com/" target="_blank"><img onMouseOver={changeIcon} onMouseOut={changeToDefaultIcons} src={tiktok} alt="TikTok"/></a></li>
+                    <li><a href="https://twitter.com/" target="_blank"><img onMouseOver={changeIcon} onMouseOut={changeToDefaultIcons} src={twitter} alt="Twitter"/></a></li>
                 </ul>
             </div>
         </footer>

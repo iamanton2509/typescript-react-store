@@ -11,6 +11,13 @@ import MyModal from './../components/UI/modal/MyModal';
 import MyInput from './../components/UI/input/MyInput';
 import MySelect from './../components/UI/select/MySelect';
 
+import mastercard from './../images/icons/payment-icons/Mastercard.svg';
+import visa from './../images/icons/payment-icons/Visa.svg';
+import applepay from './../images/icons/payment-icons/ApplePay.svg';
+import googlepay from './../images/icons/payment-icons/GooglePay.svg';
+import paypal from './../images/icons/payment-icons/PayPal.svg';
+import amazon from './../images/icons/payment-icons/AmazonPay.svg';
+
 const Cart = () => {  
     const items = useAppSelector(state => state.products.products);
     const dispatch = useAppDispatch();
@@ -199,22 +206,22 @@ const Cart = () => {
                                 <h3 className="modal-content__title">Pick payment</h3>
                                 <div className="modal-content__payment">
                                     <button disabled={!formValid} className="payment-btn">
-                                        <img src='./../images/icons/payment-icons/Mastercard.svg' />
+                                        <img src={mastercard} />
                                     </button>
                                     <button disabled={!formValid} className="payment-btn">
-                                        <img src='./../images/icons/payment-icons/Visa.svg' />
+                                        <img src={visa} />
                                     </button>
                                     <button disabled={!formValid} className="payment-btn">
-                                        <img src='./../images/icons/payment-icons/ApplePay.svg' />
+                                        <img src={applepay} />
                                     </button>
                                     <button disabled={!formValid} className="payment-btn">
-                                        <img src='./../images/icons/payment-icons/GooglePay.svg' />
+                                        <img src={googlepay} />
                                     </button>
                                     <button disabled={!formValid} className="payment-btn">
-                                        <img src='./../images/icons/payment-icons/PayPal.svg' />
+                                        <img src={paypal} />
                                     </button>
                                     <button disabled={!formValid} className="payment-btn">
-                                        <img src='./../images/icons/payment-icons/AmazonPay.svg' />
+                                        <img src={amazon} />
                                     </button>
                                 </div>
                             </div>

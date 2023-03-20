@@ -1,8 +1,12 @@
 import {useState} from 'react';
 import {NavLink} from 'react-router-dom';
 
+import open from './../images/icons/open.svg';
+import close from './../images/icons/close.svg';
+import heart from './../images/icons/heart.svg';
+import cart from './../images/icons/cart.svg';
+
 const Nav = () => {
-    
     const [openButton, setOpenButton] = useState(false);
     const [store, setStore] = useState(false);
 
@@ -43,14 +47,14 @@ const Nav = () => {
                         </li>
                     </ul>
                     <div className="nav-items">
-                        <img onClick={openNav} src='./../../images/icons/open.svg' alt="open" className="open-button" />
-                        <img src='./../../images/icons/close.svg' alt="close" className={openButton ? 'close-button' : 'close-button none'} onClick={closeNav}/>  
+                        <img onClick={openNav} src={open} alt="open" className="open-button" />
+                        <img src={close} alt="close" className={openButton ? 'close-button' : 'close-button none'} onClick={closeNav}/>  
                         <div className="nav-items__cart">
                             <NavLink to="/wishlist">
-                                <img src='./../../images/icons/heart.svg' alt="wishlist" />
+                                <img src={heart} alt="wishlist" />
                             </NavLink>
                             <NavLink to="/cart">
-                                <img src='./../../images/icons/cart.svg' alt="cart" />
+                                <img src={cart} alt="cart" />
                                 {/* <p className="nav-items__cart-title">{total}</p> */}
                             </NavLink>
                         </div>

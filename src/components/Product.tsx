@@ -2,6 +2,8 @@ import {addProductToCart, addToWishlist} from './../store/storeSlice';
 import { useAppDispatch } from '../hooks/hook';
 import {NavLink} from 'react-router-dom';
 
+import unitedstates from './../images/icons/unitedstates.svg';
+
 interface ProductProps {
     id: number;
     img: string;
@@ -43,14 +45,14 @@ const Product = ({img, title, price, id, sale, saleColor}: ProductProps) => {
                     ?   <div>
                             <h4 className="product-item__title">{title}</h4>
                             <p style={priceColor} className="product-item__price">
-                                <img src="./../images/icons/unitedstates.svg" alt="usd" />
+                                <img src={unitedstates} alt="usd" />
                                 {price} $ <span className="product-item__sale">  {sale} $</span>  
                             </p>
                         </div>
                     :   <div>
                             <h4 className="product-item__title">{title}</h4>
                             <p className="product-item__price">
-                                <img src="./../images/icons/unitedstates.svg" alt="usd" />
+                                <img src={unitedstates} alt="usd" />
                                 {price} $
                             </p>
                         </div>

@@ -10,7 +10,7 @@ import Services from './../components/Services';
 import newsList from './../helpers/newsList';
 import servicesList from './../helpers/servicesList';
 
-// import title from './../images/title.png';
+import title from './../images/title.png';
 
 const Home = () => {
     const items = useAppSelector(state => state.products.products);
@@ -31,7 +31,7 @@ const Home = () => {
                         </div>
                     </div>      
                     <div className="section-header__img" >
-                        <img src='./../images/title.png' alt="home" />
+                        <img src={title} alt="home" />
                     </div>
                 </section>
 

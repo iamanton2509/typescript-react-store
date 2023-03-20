@@ -1,6 +1,8 @@
 import { useAppDispatch } from '../hooks/hook';
 import {deleteProduct} from './../store/storeSlice';
 
+import del from './../images/icons/delete.svg';
+
 interface ButtonDeleteProps {
     id: number;
 }
@@ -10,7 +12,7 @@ const ButtonDelete = ({id}: ButtonDeleteProps) => {
 
     return (
         <button onClick={() => dispatch(deleteProduct(id))}>
-            <img src="./../images/icons/delete.svg" alt="delete" />
+            <img src={del} alt="delete" />
         </button>
     );
 }

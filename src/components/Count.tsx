@@ -1,6 +1,9 @@
 import {useAppDispatch} from '../hooks/hook';
 import {increaseCount, decreaseCount} from './../store/storeSlice';
 
+import up from './../images/icons/up.svg';
+import down from './../images/icons/down.svg';
+
 interface CountProps {
     id: number;
     count: number;
@@ -16,10 +19,10 @@ const Count = ({count, id}: CountProps) => {
             </div>
             <div className="count__controls">
                 <button className="product-controls" onClick={() => dispatch(increaseCount(id))}>
-                    <img src="./../images/icons/up.svg" alt="increase" />
+                    <img src={up} alt="increase" />
                 </button>
                 <button className="product-controls" onClick={() => dispatch(decreaseCount(id))}>
-                    <img src="./../images/icons/down.svg" alt="decrease" />
+                    <img src={down} alt="decrease" />
                 </button>
             </div>
         </div>

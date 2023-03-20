@@ -6,6 +6,9 @@ import {addProductToCart} from './../store/storeSlice';
 import MyModal from './../components/UI/modal/MyModal';
 import MyInput from './../components/UI/input/MyInput';
 
+import unitedstates from './../images/icons/unitedstates.svg';
+import ukraine from './../images/icons/ukraine.svg';
+
 interface CurrencyTypes {
     myUkrainianArray: number[];
 }
@@ -120,10 +123,10 @@ const Product = ({myUkrainianArray}: CurrencyTypes) => {
                     <div className="product-section__description">
                         <h2 className="product-section__title">{product.title}</h2>
                         <h3 className="product-section__price">
-                            <img src="./../images/icons/unitedstates.svg" alt="usd" /> {product.price} $
+                            <img src={unitedstates} alt="usd" /> {product.price} $
                         </h3>
                         <h3 className="product-section__price">
-                            <img src='./../images/icons/ukraine.svg' alt="uah" /> {myUkrainianArray[product.id]} UAH
+                            <img src={ukraine} alt="uah" /> {myUkrainianArray[product.id]} UAH
                         </h3>
                         <p style={textColor} className="product-section__details">{product.description}</p>
                         <div className="product-section__button">
