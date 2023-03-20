@@ -1,0 +1,25 @@
+.section {
+    margin: 25px 5px;
+}
+.section-title {
+    font-size: 35px;
+    font-weight: 500;
+    color: rgb(187, 38, 73);
+}
+.item {
+    margin: 15px 0;
+}
+.item__title {
+    font-size: 25px;
+    font-weight: 500;
+    color: rgb(196, 71, 100);
+    cursor: pointer;
+}
+.item__paragraph {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #262626;
+
+    margin: 10px 0;
+}

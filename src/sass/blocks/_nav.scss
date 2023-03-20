@@ -1,0 +1,155 @@
+.nav {
+    background-color: rgb(187, 38, 73);
+    padding: 25px 0;
+}
+.nav-container {
+    max-width: 1270px;
+    margin: 0 auto;
+    padding: 0 20px;
+    align-items: center;
+}
+.nav-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.nav-logo {
+    font-size: 18px;
+    font-weight: 500;
+    color: #f6f6f6;
+    cursor: pointer;
+}
+.nav-list {
+    display: flex;
+    column-gap: 35px;
+}
+.nav-list__link {
+    color: #f6f6f6;
+}
+.nav-list__item {
+    position: relative;
+
+    color: #f6f6f6;
+    font-weight: 500;
+
+    cursor: pointer;
+    
+}
+.nav-list__item:hover::after, .nav-list__item.active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 100%;
+
+    width: 100%;
+    
+    height: 2.5px;
+    border-radius: 2px;
+    background-color: #f6f6f6;
+}
+.nav-items {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    column-gap: 10px;
+    color: #f6f6f6;
+}
+.nav-items__cart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 10px;
+    cursor: pointer;
+}
+.nav-items__cart img {
+    width: 32px;
+    height: 32px;
+}
+.nav-items__cart-title {
+    position: absolute;
+    top: 38px;
+    right: 34px;
+    font-size: 12px;
+    color: #f6f6f6;
+}
+.open-button {
+    display: none;
+}
+.close-button {
+    position: fixed;
+    z-index: 2;
+
+    top: 34.5px;
+    right: 20px;
+}
+
+/* Dropdown shop */
+
+.shop-items {
+    display: none;
+}
+.shop-items.open {
+    display: flex;
+    column-gap: 50px;
+    margin-top: 30px;
+}
+.shop-items__column {
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+}
+.shop-items > * {
+    color: #f6f6f6;
+    font-weight: 500;
+}
+.nav-shop:hover .shop-items {
+    display: block;
+}
+.shop-items__title {
+    font-size: 15px;
+    font-weight: 600;
+    color:#f6f6f6;
+    margin-bottom: 10px;
+}
+.shop-items__column a {
+    color:rgb(232, 154, 173);
+}
+.shop-items__column a:hover {
+    color: #f6f6f6;
+}
+
+@media (max-width: 520px) {
+    .nav-list {
+        display: none;
+    }
+    .nav-items__cart {
+        display: none;
+    }
+    .open-button {
+        display: unset;
+        z-index: 1;
+    }
+    .nav-nav.open .nav-list {
+        position: fixed;
+
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+
+        background-color: #f6f6f6;
+        z-index: 2;
+
+        display: flex;
+        flex-direction: column;
+        row-gap: 30px;
+        padding: 25px 35px;
+
+        font-size: 35px;
+        font-weight: 500;
+    }
+    .nav-list__link {
+        color:rgb(187, 38, 73);
+    }
+}

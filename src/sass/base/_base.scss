@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap');
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    min-height: 100vh;
+}
+
+/* Sticky footer */
+#root, .App {
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.container {
+    max-width: 1270px;
+    padding: 0 20px;
+    margin: 0 auto;
+}
+.none {
+    display: none !important;
+}
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #f6f6f6;
+}
+::-webkit-scrollbar-thumb {
+    background: rgb(187, 38, 73);
+    border-radius: 10px;
+}

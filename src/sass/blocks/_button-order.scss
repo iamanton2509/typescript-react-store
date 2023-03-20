@@ -1,0 +1,19 @@
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.button {
+    width: 205px;
+    padding: 12px;
+    margin-bottom: 45px;
+    border: 2px solid rgb(187, 38, 73);
+    background-color: rgb(187, 38, 73);
+    transition: all 0.2s;
+    font-weight: 500;
+    color: #f6f6f6;
+}
+.button:hover {
+    background-color: #f6f6f6;
+    color: rgb(187, 38, 73);
+}

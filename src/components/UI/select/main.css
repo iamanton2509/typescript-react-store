@@ -1,0 +1,7 @@
+.mySelect {
+    display: block;
+    width: 245px;
+    margin-bottom: 15px;
+    padding: 5px;
+    border: 1.5px solid rgb(187, 38, 73);
+}

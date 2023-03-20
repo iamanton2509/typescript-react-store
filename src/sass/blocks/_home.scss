@@ -1,0 +1,151 @@
+.section-header {
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+    justify-content: center;
+
+    color: #262626;
+}
+.section-header__text h1 {
+    font-size: 35px;
+    font-weight: 600;
+    color: #BB2649;
+    text-align: center;
+}
+.section-header__text p {
+    font-size: 20px;
+    font-weight: 500;
+    color: #262626;
+    text-align: center;
+    line-height: 1.4;
+    margin: 26px 0 22px;
+}
+.link-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.link {
+    padding: 15px 35px;
+    border: 1.5px solid #BB2649;
+
+    color: #BB2649;
+    font-weight: 500;
+
+    transition: all 0.3s;
+}
+.link:hover {
+    color: #F6F6F6;
+    background-color: #BB2649;
+}
+.section-header__img img {
+    width: 500px;
+    height: 400px;
+    display: block;
+    margin: auto;
+}
+
+/* Section sale products */
+
+.section-sale {
+    margin: 35px 0;
+}
+.section-sale__title {
+    font-size: 35px;
+    font-weight: 600;
+    text-align: center;
+
+    color: #262626;
+}
+.section-sale__products {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    gap: 25px;
+    justify-content: center;
+    margin: 20px 0 70px;
+
+    color: #262626;
+}
+
+/* Services */
+
+.services__title {
+    width: 500px;
+    text-align: center;
+    margin: 0 auto 25px;
+
+    font-size: 35px;
+    font-weight: 600;
+    color: #BB2649;
+}
+
+.services-items {
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    column-gap: 70px;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Section news */
+
+.section-news {
+    display: flex;
+    flex-direction: column;
+    row-gap: 25px;
+    margin: 70px 0;
+}
+.news-title {
+    text-align: center;
+    font-size: 35px;
+    font-weight: 600;
+    color: #BB2649;
+}
+.news-description {
+    text-align: center;
+    font-size: 20px;
+    font-weight: 500;
+}
+.news {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    column-gap: 10px;
+}
+
+/* Adaptivness */
+
+@media (max-width: 1010px) {
+    .section-header {
+        display: flex;
+        flex-direction: column;
+    }
+    .section-header__img img {
+        display: none;
+    }
+    .section-sale__title {
+        font-size: 30px;
+    }
+    .section-sale__products {
+        display: grid;
+        grid-template-columns: repeat(2, auto);
+        gap: 15px;
+    }
+    .services__title {
+        width: unset;
+    }
+    .services-items {
+        grid-template-columns: repeat(2, auto);
+        column-gap: 30px;
+    }
+    .news {
+        display: flex;
+        flex-direction: column;
+        row-gap: 20px;
+    }
+}
+@media (max-width: 680px) {
+    .services-items {
+        display: flex;
+        flex-direction: column;
+        row-gap: 10px;
+    }
+}

@@ -1,0 +1,24 @@
+.wishlist {
+    font-size: 45px;
+    font-weight: 600;
+    color: #bb2649;
+    margin-top: 10px;
+}
+.wishlist-description {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    margin-top: 10px;
+}
+.wishlist__title {
+    font-size: 19px;
+    font-weight: 500;
+}
+.wishlist__description {
+    font-size: 17px;
+}
+.wishlist__info {
+    font-size: 19px;
+    font-weight: 600;
+    color: #bb2649;
+}

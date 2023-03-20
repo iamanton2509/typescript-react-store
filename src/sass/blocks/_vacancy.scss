@@ -1,0 +1,17 @@
+.vacancy {
+    margin: 6px;
+    padding: 10px;
+    border: 2px solid #262626;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.vacancy__title {
+    font-size: 17px;
+    font-weight: 500;
+}
+.vacancy__description {
+    font-weight: 400;
+}
+.vacancy:hover {
+    box-shadow: rgba(0, 0, 0, 0.45) 0px 5px 15px;
+}
