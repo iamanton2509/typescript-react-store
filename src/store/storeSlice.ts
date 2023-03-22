@@ -540,13 +540,13 @@ const storeSlice = createSlice({
     reducers: {
         sortProducts (state, action: PayloadAction<string>) {
             if (action.payload === 'price-ascending') {
-                state.products = state.products.sort((a, b) => a['price'] - b['price']);
+                state.products.sort((a, b) => a['price'] - b['price']);
             } else if (action.payload === 'price-descending') {
-                state.products = state.products.sort((a, b) => b['price'] - a['price']);
+                state.products.sort((a, b) => b['price'] - a['price']);
             } else if (action.payload === 'title') {
-                state.products = state.products.sort((a, b) => a['title'].localeCompare(b['title']));
+                state.products.sort((a, b) => a['title'].localeCompare(b['title']));
             } else if (action.payload === 'id') {
-                state.products = state.products.sort((a, b) => a['id'] - b['id']);
+                state.products.sort((a, b) => a['id'] - b['id']);
             }
         },
         addProductToCart (state, action: PayloadAction<number>) {

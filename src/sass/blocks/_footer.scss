@@ -21,3 +21,9 @@
 .footer-items__link:hover {
     color:#fff;
 }
+@media (max-width: 680px) {
+    .footer-items,
+    .footer-socials {
+        column-gap: 25px;
+    }
+}

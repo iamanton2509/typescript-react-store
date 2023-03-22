@@ -68,3 +68,9 @@ textarea {
     text-align: center;
     margin-bottom: 5px;
 }
+@media (max-width: 520px){
+    .question-section {
+        flex-direction: column;
+        row-gap: 20px;
+    }
+}

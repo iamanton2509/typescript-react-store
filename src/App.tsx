@@ -1,4 +1,3 @@
-import {useState, useMemo} from 'react';
 import {useAppSelector} from './hooks/hook';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 
@@ -28,14 +27,7 @@ interface CurrencyProduct {
 }
 
 const App = () => {
-    const [search, setSearch] = useState('');
-
     const products = useAppSelector(state => state.products.products);
-
-    const searchedProducts = useMemo(() => {
-        return products.filter(product => product.title.toLowerCase().includes(search.toLowerCase()));
-    }, [search]);
-
 
     let myUkrainianArray:number[] = [];
     async function convertCurrencies() {
@@ -64,18 +56,11 @@ const App = () => {
             <Nav />
             <Routes>  
                 <Route path="/" element={<Home /> } />
-                <Route path="/products" element={<Products   
-                        search={search}
-                        setSearch={setSearch}
-                        searchedProducts={searchedProducts}
-                        myUkrainianArray={myUkrainianArray}
-                    />} 
-                />
+                <Route path="/products" element={<Products />} />
                 <Route path="/:name" element={<Store myUkrainianArray={myUkrainianArray} />} />
                 <Route path="/accessories/:name" element={<Accessories myUkrainianArray={myUkrainianArray} />} />
                 <Route path="/accessory/:id" element={<Accessory myUkrainianArray={myUkrainianArray} />} />
                 <Route path="/about" element={<About />} />
-
                 <Route path="/cart" element={<Cart />} />                     
                 <Route path="/news/:id" element={<NewsPage />} />     
                 <Route path="/product/:id" element={<Product myUkrainianArray={myUkrainianArray} />} />

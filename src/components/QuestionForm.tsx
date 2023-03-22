@@ -2,6 +2,7 @@ import {useState, useEffect} from "react";
 import MyInput from "./UI/input/MyInput";
 import MySelect from "./UI/select/MySelect";
 import QuestionList from "./QuestionList";
+import plus from "./../images/icons/plus.svg";
 
 interface IQuestions {
     name: string;
@@ -164,7 +165,7 @@ const QuestionForm = () => {
                     placeholder="Type your question here..." 
                 />
                 <button disabled={!formValid} onClick={confirmForm} className="form-button">
-                    <img src="./../images/icons/plus.svg" alt="Plus" />
+                    <img src={plus} alt="Plus" />
                 </button>
             </form>
             {questions.length < 4 

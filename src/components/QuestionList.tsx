@@ -1,3 +1,5 @@
+import check from "./../images/icons/check.svg";
+
 interface QuestionListProps {
     name: string;
     phone: string;
@@ -19,7 +21,7 @@ const QuestionList = ({name, phone, email, text}: QuestionListProps) => {
                 </div> 
                 <div className="sent__icon">
                     <h1 style={{color: '#fff'}}>hello</h1>
-                    <img src="./../images/icons/check.svg" alt="check" />
+                    <img src={check} alt="check" />
                 </div>
             </div>
         </div>

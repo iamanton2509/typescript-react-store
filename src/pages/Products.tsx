@@ -1,24 +1,21 @@
-import {useState} from 'react';
+import {useState, useMemo} from 'react';
 import {useAppDispatch, useAppSelector} from '../hooks/hook';
 import {sortProducts} from './../store/storeSlice';
-import {IProduct} from './../types';
 
 import Product from './../components/Product';
 import MySelect from './../components/UI/select/MySelect';
 import MyInput from './../components/UI/input/MyInput';
 
-type ProductsProps = {
-    searchedProducts: IProduct[];
-    search: string;
-    setSearch: (str: string) => void;
-    myUkrainianArray: number[];
-  }
-
-const Products = ({search, setSearch, searchedProducts, myUkrainianArray}: ProductsProps) => {
-    const [selectedSort, setSelectedSort] = useState('');
-
+const Products = () => {
     const items = useAppSelector(state => state.products.products);
     const dispatch = useAppDispatch();
+
+    const [selectedSort, setSelectedSort] = useState('');
+    const [search, setSearch] = useState('');
+
+    const searchedProducts = useMemo(() => {
+        return items.filter(product => product.title.toLowerCase().includes(search.toLowerCase()));
+    }, [search, items]);
 
     const sortProductsBy = (sort: string) => {
         setSelectedSort(sort);
@@ -40,7 +37,12 @@ const Products = ({search, setSearch, searchedProducts, myUkrainianArray}: Produ
                         {value: 'title', name: 'Sort by name'},
                         {value: 'id', name: 'Sort by default'},
                     ]} defaultValue="Sort by" />
-                    <MyInput type="text" value={search} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearch(e.target.value)} placeholder="Search by name"  />
+                    <MyInput  
+                        value={search} 
+                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearch(e.target.value)} 
+                        placeholder="Search by name"
+                        type="text"  
+                    />
                     <ul className="products">
                         {searchedProducts.map((item) => 
                             <Product 
