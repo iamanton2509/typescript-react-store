@@ -12,10 +12,12 @@ const Nav = () => {
 
     const openNav = () => {
         setOpenButton(true);
+        setStore(false);
     }
 
     const closeNav = () => {
         setOpenButton(false);
+        setStore(false);
     }
 
     const togglestore = () => {
@@ -28,7 +30,7 @@ const Nav = () => {
 
                 <nav className={openButton ? "nav-nav open" : "nav-nav"}>
                     <div className="nav-logo">
-                        <h1 className="nav-logo__title">The Apple Hub</h1>
+                        <NavLink to="/" className="nav-logo"><h1 className="nav-logo__title">The Apple Hub</h1></NavLink>
                     </div>
                     <ul className="nav-list">
                         <li className="nav-list__item">
@@ -44,6 +46,9 @@ const Nav = () => {
                         </li>
                         <li className="nav-list__item">
                             <NavLink to="/cart" className="nav-list__link" onClick={closeNav}>Cart</NavLink>
+                        </li>
+                        <li className="nav-list__item">
+                            <NavLink to="/wishlist" className="nav-list__link nav-list__wishlist" onClick={closeNav}>Wishlist</NavLink>
                         </li>
                     </ul>
                     <div className="nav-items">

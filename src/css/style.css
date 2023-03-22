@@ -1468,6 +1468,10 @@ textarea {
   color: #f6f6f6;
 }
 
+.nav-list__wishlist {
+  display: none;
+}
+
 .open-button {
   display: none;
 }
@@ -1551,6 +1555,9 @@ textarea {
   }
   .nav-shop {
     display: none;
+  }
+  .nav-list__wishlist {
+    display: unset;
   }
 }
 .news-item {

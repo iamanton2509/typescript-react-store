@@ -12,7 +12,7 @@ export default class VacancyService {
     }
 
     static async getCommentsByPostId(id: number) {
-        const response = await axios.get(`https://jsonplaceholder.typicode.com/posts/${id}/comments`);
+        const response = await axios.get(`https://jsonplaceholder.typicode.com/posts/${id+1}/comments`);
         return response;
     }
 }
