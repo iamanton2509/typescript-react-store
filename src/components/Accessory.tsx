@@ -1,4 +1,6 @@
 import {NavLink} from "react-router-dom";
+import usa from './../images/icons/unitedstates.svg';
+import ukraine from './../images/icons/ukraine.svg';
 
 interface StoreItemProps {
     title: string;
@@ -17,11 +19,11 @@ const Accessory = ({id, title, img, price, myUkrainianArray}: StoreItemProps) =>
                     <h4 className="cart__title">{title}</h4>
                     <img src={img} alt={title} />
                     <p className="cart__price">
-                        <img src="./../../images/icons/unitedstates.svg" alt="usd" />
+                        <img src={usa} alt="usd" />
                         {price} $
                     </p>
                     <p className="cart__price">
-                        <img src="./../../images/icons/ukraine.svg" alt="usd" />
+                        <img src={ukraine} alt="usd" />
                         {myUkrainianArray[id]} UAH
                     </p>
                 </div> 

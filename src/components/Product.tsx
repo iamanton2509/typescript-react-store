@@ -1,5 +1,5 @@
 import {addProductToCart, addToWishlist} from './../store/storeSlice';
-import { useAppDispatch } from '../hooks/hook';
+import {useAppDispatch} from '../hooks/hook';
 import {NavLink} from 'react-router-dom';
 
 import unitedstates from './../images/icons/unitedstates.svg';
@@ -11,16 +11,18 @@ interface ProductProps {
     price: number;
     sale?: number;
     saleColor?: string;
+    style?: boolean;
+    styles?: string[][];
 }
 
-const Product = ({img, title, price, id, sale, saleColor}: ProductProps) => {
+const Product = ({img, title, price, id, sale, saleColor, style, styles}: ProductProps) => {
     const dispatch = useAppDispatch();
 
     const priceColor = {
         color: saleColor,
         fontSize: 17
     };
-
+   
     return (
         <>
             <svg style={{display: "none"}} xmlns="http://www.w3.org/2000/svg">
@@ -36,22 +38,22 @@ const Product = ({img, title, price, id, sale, saleColor}: ProductProps) => {
                 </symbol>
             </svg>
 
-            <li className="product-item">
+            {styles && <li className={styles[Number(style)][1]}>
                 <NavLink to={`/product/${id}`}>
-                    <img src={img} alt={title} className="product-item__img" />
+                    <img src={img} alt={title} className={styles[Number(style)][2]} />
                 </NavLink>
-                <div className="product-item__description">
+                <div className={styles[Number(style)][3]}>
                     {sale 
                     ?   <div>
-                            <h4 className="product-item__title">{title}</h4>
-                            <p style={priceColor} className="product-item__price">
+                            <h4 className={styles[Number(style)][4]}>{title}</h4>
+                            <p style={priceColor} className={styles[Number(style)][5]}>
                                 <img src={unitedstates} alt="usd" />
-                                {price} $ <span className="product-item__sale">  {sale} $</span>  
+                                {price} $ <span className={styles[Number(style)][6]}>  {sale} $</span>  
                             </p>
                         </div>
                     :   <div>
-                            <h4 className="product-item__title">{title}</h4>
-                            <p className="product-item__price">
+                            <h4 className={styles[Number(style)][4]}>{title}</h4>
+                            <p className={styles[Number(style)][5]}>
                                 <img src={unitedstates} alt="usd" />
                                 {price} $
                             </p>
@@ -70,7 +72,7 @@ const Product = ({img, title, price, id, sale, saleColor}: ProductProps) => {
                         </button>
                     </div>
                 </div>
-            </li>
+            </li>}
         </>
     );
 }

@@ -1,5 +1,5 @@
 import {useParams} from "react-router-dom";
-import { useAppSelector } from "../hooks/hook";
+import {useAppSelector} from "../hooks/hook";
 import {StoreProps} from './../types';
 
 import StoreItem from "./../components/StoreItem";

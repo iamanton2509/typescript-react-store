@@ -366,6 +366,69 @@ body {
   transform: scale(1.1);
 }
 
+.products-list {
+  display: flex;
+  flex-direction: row;
+  row-gap: 10px;
+}
+
+.product-list-item {
+  max-height: 300px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.product-list-item:hover {
+  box-shadow: rgba(0, 0, 0, 0.65) 0px 5px 15px;
+  transform: scale(1.1);
+}
+
+.product-list-item__img {
+  width: 380px;
+  height: 250px;
+  object-fit: contain;
+  border-right: 1px solid rgb(212, 196, 199);
+  padding: 5px;
+}
+
+.product-list-item__title {
+  text-align: center;
+  font-size: 18.5px;
+  font-weight: 500;
+  color: #252525;
+  padding: 0 10px 2px 10px;
+}
+
+.product-list-item__price {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  row-gap: 5px;
+  font-size: 17px;
+  color: #333;
+  padding: 0 10px;
+}
+
+.product-list-item__sale {
+  font-size: 17px;
+  color: #333;
+  margin-left: 15px;
+  text-decoration: line-through;
+}
+
+.product-list-item__description {
+  display: flex;
+  justify-content: center;
+  padding: 7px;
+}
+
+.product-list-item__description button {
+  margin-right: 10px;
+}
+
 @media (min-width: 390px) and (max-width: 620px) {
   .products {
     grid-template-columns: auto auto;

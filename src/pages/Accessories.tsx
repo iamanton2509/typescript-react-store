@@ -40,7 +40,6 @@ const Accessories = ({myUkrainianArray}: CurrencyTypes) => {
                                 return <Accessory key={accessory.id} title={accessory.title} img={accessory.img} price={accessory.price} id={accessory.id} myUkrainianArray={myUkrainianArray} />
                             }
                         }
-                        
                     })}
                 </ul> 
                 {current &&<p className="description">{current.text2}</p>}
@@ -52,7 +51,14 @@ const Accessories = ({myUkrainianArray}: CurrencyTypes) => {
                     {accessories.map((accessory) => {
                         if (current && current.main && current.top) {
                             if (accessory.id >= current.main && accessory.id < current.top) {
-                                return <Accessory key={accessory.id} title={accessory.title} img={accessory.img} price={accessory.price} id={accessory.id} myUkrainianArray={myUkrainianArray} />
+                                return <Accessory 
+                                            key={accessory.id} 
+                                            id={accessory.id} 
+                                            title={accessory.title} 
+                                            img={accessory.img} 
+                                            price={accessory.price} 
+                                            myUkrainianArray={myUkrainianArray} 
+                                        />
                             }
                         }
                     })}
