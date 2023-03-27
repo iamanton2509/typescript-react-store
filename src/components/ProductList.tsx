@@ -36,22 +36,22 @@ const Product = ({img, title, price, id, sale, saleColor}: ProductProps) => {
                 </symbol>
             </svg>
 
-            <li className="product-item">
+            <li className="product-list-item">
                 <NavLink to={`/product/${id}`}>
-                    <img src={img} alt={title} className='product-item__img' />
+                    <img src={img} alt={title} className='product-list-item__img' />
                 </NavLink>
-                <div className='product-item__description'>
+                <div className='product-list-item__description'>
                     {sale 
-                    ?   <div className="products-item__prices">
-                            <h4 className='product-item__title'>{title}</h4>
-                            <p style={priceColor} className='product-item__price'>
+                    ?   <div className="products-list-item__prices">
+                            <h4 className='product-list-item__title'>{title}</h4>
+                            <p style={priceColor} className='product-list-item__price'>
                                 <img src={unitedstates} alt="usd" />
-                                {price} $ <span className='product-item__sale'>  {sale} $</span>  
+                                {price} $ <span className='product-list-item__sale'>  {sale} $</span>  
                             </p>
                         </div>
-                    :   <div className="products-item__prices">
-                            <h4 className='product-item__title'>{title}</h4>
-                            <p className='product-item__price'>
+                    :   <div className="products-list-item__prices">
+                            <h4 className='product-list-item__title'>{title}</h4>
+                            <p className='product-list-item__price'>
                                 <img src={unitedstates} alt="usd" />
                                 {price} $
                             </p>

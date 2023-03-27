@@ -9,7 +9,7 @@ interface CurrencyTypes {
 const Wishlist = ({myUkrainianArray}: CurrencyTypes) => {
     const items = useAppSelector(state => state.products.products);
 
-    let count = 0;
+    let count:number = 0;
     for (let i = 0; i < items.length; i++) {
         if (items[i].wishlist) {
             count += 1;
