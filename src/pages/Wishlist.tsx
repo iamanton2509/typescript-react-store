@@ -2,11 +2,7 @@ import { useAppSelector } from "../hooks/hook";
 
 import Product from "./../components/Product";
 
-interface CurrencyTypes {
-    myUkrainianArray: number[];
-}
-
-const Wishlist = ({myUkrainianArray}: CurrencyTypes) => {
+const Wishlist = () => {
     const items = useAppSelector(state => state.products.products);
 
     let count:number = 0;

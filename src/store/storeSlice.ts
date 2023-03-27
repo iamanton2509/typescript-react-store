@@ -43,6 +43,9 @@ import strap4 from "./../images/products/strap4.jpg";
 import strap5 from "./../images/products/strap5.jpg";
 import strap6 from "./../images/products/strap6.jpg";
 
+// [[{cart-item1}, {cart-item-2}, {cart-item3}], [{cart-item4}, {cart-item-5}, {cart-item6}]]
+// [{cart-item1}, {cart-item-2}, {cart-item3}]
+
 type Product = {
     id: number;
     img: any;
@@ -58,10 +61,12 @@ type Product = {
     wishlist: boolean;
     cart: boolean;
 }
+
 type ProductState = {
     products: Product[]
 }
-const initialState:ProductState = {
+
+const initialStateProducts:ProductState = {
     products: [
         {
             id: 0,
@@ -536,7 +541,7 @@ const initialState:ProductState = {
 
 const storeSlice = createSlice({
     name: 'products',
-    initialState,
+    initialState: initialStateProducts,
     reducers: {
         sortProducts (state, action: PayloadAction<string>) {
             if (action.payload === 'price-ascending') {
@@ -585,7 +590,7 @@ const storeSlice = createSlice({
             if (wishedProduct) {
                 wishedProduct.wishlist = !wishedProduct.wishlist;
             }
-        }
+        },
     }
 });
 
