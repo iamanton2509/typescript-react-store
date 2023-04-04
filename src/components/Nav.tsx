@@ -229,10 +229,10 @@ const Nav = () => {
                     <div className={store ? "shop-items open" : "shop-items"}>
                         <div className="shop-items__column">
                             <h4 className="shop-items__title">Shop</h4>
-                            <NavLink to="/iphone" onClick={togglestore}>iPhone</NavLink>
-                            <NavLink to="/mac" onClick={togglestore}>Mac</NavLink>
-                            <NavLink to="/applewatch" onClick={togglestore}>Apple Watch</NavLink>
-                            <NavLink to="/airpods" onClick={togglestore}>Air Pods</NavLink> 
+                            <NavLink to="/shop/iphone" onClick={togglestore}>iPhone</NavLink>
+                            <NavLink to="/shop/mac" onClick={togglestore}>Mac</NavLink>
+                            <NavLink to="/shop/applewatch" onClick={togglestore}>Apple Watch</NavLink>
+                            <NavLink to="/shop/airpods" onClick={togglestore}>Air Pods</NavLink> 
                         </div>
                         <div className="shop-items__column">
                             <h4 className="shop-items__title">Accessories</h4>

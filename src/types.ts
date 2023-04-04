@@ -3,13 +3,13 @@ export interface IProduct {
     img: string;
     title: string;
     description: string;
-    color: string;
+    color?: string;
     count: number;
     price: number;
     sale?: number;
     saleColor?: string;
     totalPrice: number;
-    newItem: boolean;
+    newItem?: boolean;
     wishlist: boolean;
     cart: boolean;
 }
