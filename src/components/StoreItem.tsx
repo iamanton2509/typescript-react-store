@@ -6,7 +6,7 @@ interface StoreItemProps {
     title: string;
     img: string;
     price: number;
-    newItem: boolean;
+    newItem: boolean | undefined;
     myUkrainianArray: number[];
     id: number;
 }

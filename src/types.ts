@@ -35,3 +35,8 @@ export interface StoreProps {
 export interface CurrencyTypes {
     myUkrainianArray: number[];
 }
+export interface IService {
+    id: string;
+    title: string;
+    description: string;
+}

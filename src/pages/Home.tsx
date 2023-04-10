@@ -1,23 +1,26 @@
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import {NavLink} from 'react-router-dom';
-import {useAppSelector} from '../hooks/hook';
-
+import {useAppSelector, useAppDispatch} from '../hooks/hook';
+import {fetchServices} from '../store/serviceSlice';
 import Product from './../components/Product';
 import News from './../components/News';
 import Newsletter from './../components/Newsletter';
 import Services from './../components/Services';
-
 import newsList from './../helpers/newsList';
 import servicesList from './../helpers/servicesList';
-
 import title from './../images/title.png';
 
 const Home = () => {
+    const dispatch = useAppDispatch();
     const items = useAppSelector(state => state.products.products);
+    const {services, status, error} = useAppSelector(state => state.services);
 
     const [products, setProducts] = useState(items);
     const [news, setNews] = useState(newsList);
-    const [services, setServices] = useState(servicesList);
+
+    useEffect(() => {
+        dispatch(fetchServices());
+    }, []);
 
     return (
         <section className="section">
@@ -53,21 +56,19 @@ const Home = () => {
                         })}
                     </ul>
                 </section>
-
                 <section className="services">
                     <h1 className="services__title">Exploring Your Personalized Preferences and Shopping Experience</h1>
-                    <ul className="services-items">
+                    {!error ? 
+                        <ul className="services-items"> 
                         {services.map(service => 
                             <Services 
-                                key={service.id} 
-                                img={service.img} 
+                                key={service.id}
                                 title={service.title}
                                 description={service.description}
                             />
                         )}
-                    </ul>
+                    </ul> : error}
                 </section>
-
                 <section className="section-news">
                     <h2 className="news-title">News & blogs</h2>
                     <p className="news-description">Our "News" block is designed to keep you informed about the latest product releases, software updates, promotions, and other important news that may be of interest to you. We believe that staying up-to-date with the latest news and trends in the world of Apple can help you make more informed decisions about the products you buy and use.</p>
