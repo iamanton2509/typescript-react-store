@@ -40,3 +40,16 @@ export interface IService {
     title: string;
     description: string;
 }
+export interface IRegister {
+    firstname: string;
+    lastname: string;
+    email: string;
+    password: string;
+}
+export interface IUser {
+    firstname: string | null;
+    lastname: string | null;
+    email: string | null;
+    id: string | null;
+    token: string | null;
+}

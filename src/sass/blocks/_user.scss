@@ -1,0 +1,35 @@
+.user-header {
+    padding: 25px 0;
+}
+.user-header__greeting {
+    text-align: center;
+    color: $main;
+    font-size: 25px;
+    font-weight: 600;
+}
+.user-header__account {
+    text-align: center;
+    font-weight: 500;
+    margin-top: 6px;
+}
+.user-orders {
+    margin: 5px 0 25px;
+    width: 500px;
+    height: 350px;
+    background-color: $white;
+}
+.user-logout {
+    display: block;
+    padding: 8px 20px;
+    margin: 10px auto;
+    border: 1.5px solid $main;
+    background-color: $main;
+    color: $white;
+    border-radius: 5px;
+    transition: background-color 0.4s ease-out, color 0.4s ease-in;
+
+    &:hover {
+        background-color: $white;
+        color: $main;
+    }
+}

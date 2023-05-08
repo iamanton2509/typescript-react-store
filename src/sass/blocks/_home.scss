@@ -3,18 +3,18 @@
     grid-template-columns: repeat(2, 50%);
     justify-content: center;
 
-    color: #262626;
+    color: $dark;
 }
 .section-header__text h1 {
     font-size: 35px;
     font-weight: 600;
-    color: #BB2649;
+    color: $main;
     text-align: center;
 }
 .section-header__text p {
     font-size: 20px;
     font-weight: 500;
-    color: #262626;
+    color: $dark;
     text-align: center;
     line-height: 1.4;
     margin: 26px 0 22px;
@@ -26,16 +26,16 @@
 }
 .link {
     padding: 15px 35px;
-    border: 1.5px solid #BB2649;
+    border: 1.5px solid $main;
 
-    color: #BB2649;
+    color: $main;
     font-weight: 500;
 
     transition: all 0.3s;
 }
 .link:hover {
-    color: #F6F6F6;
-    background-color: #BB2649;
+    color: $white;
+    background-color: $main;
 }
 .section-header__img img {
     width: 500px;
@@ -54,7 +54,7 @@
     font-weight: 600;
     text-align: center;
 
-    color: #262626;
+    color: $dark;
 }
 .section-sale__products {
     display: grid;
@@ -63,7 +63,7 @@
     justify-content: center;
     margin: 20px 0 70px;
 
-    color: #262626;
+    color: $dark;
 }
 
 /* Services */
@@ -75,7 +75,7 @@
 
     font-size: 35px;
     font-weight: 600;
-    color: #BB2649;
+    color: $main;
 }
 
 .services-items {
@@ -98,7 +98,7 @@
     text-align: center;
     font-size: 35px;
     font-weight: 600;
-    color: #BB2649;
+    color: $main;
 }
 .news-description {
     text-align: center;

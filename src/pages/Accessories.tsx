@@ -1,7 +1,6 @@
 import {useParams} from "react-router-dom";
-import { useAppSelector } from "../hooks/hook";
-import { StoreProps } from "../types";
-
+import {useAppSelector} from "../hooks/hook";
+import {StoreProps} from "../types";
 import Accessory from "./../components/Accessory";
 import store from "./../helpers/store";
 

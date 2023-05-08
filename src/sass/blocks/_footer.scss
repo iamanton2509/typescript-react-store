@@ -1,5 +1,5 @@
 .footer {
-    background-color: rgb(187, 38, 73);
+    background-color: $main;
     padding: 25px 0;
 }
 .footer-items,
@@ -15,7 +15,7 @@
     height: 45px;
 }
 .footer-items__link {
-    color: #f6f6f6;
+    color: $white;
     font-weight: 500;
 }
 .footer-items__link:hover {

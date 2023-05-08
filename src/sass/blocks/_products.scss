@@ -3,7 +3,7 @@
     font-weight: 600;
     text-align: center;
     margin: 45px 0;
-    color: #BB2649;
+    color: $main;
 }
 .products {
     display: grid;
@@ -67,10 +67,10 @@
     transform: scale(1.1);
 }
 .icon__heart {
-    fill: #262626;
+    fill: $dark;
 }
 .icon__heart:active {
-    fill: #BB2649;
+    fill: $main;
     transform: scale(1.1);
 }
 

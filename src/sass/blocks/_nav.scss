@@ -1,5 +1,5 @@
 .nav {
-    background-color: rgb(187, 38, 73);
+    background-color: $main;
     padding: 25px 0;
 }
 .nav-container {
@@ -16,7 +16,7 @@
 .nav-logo {
     font-size: 18px;
     font-weight: 500;
-    color: #f6f6f6;
+    color: $white;
     cursor: pointer;
 }
 .nav-list {
@@ -24,12 +24,12 @@
     column-gap: 35px;
 }
 .nav-list__link {
-    color: #f6f6f6;
+    color: $white;
 }
 .nav-list__item {
     position: relative;
 
-    color: #f6f6f6;
+    color: $white;
     font-weight: 500;
 
     cursor: pointer;
@@ -45,7 +45,7 @@
     
     height: 2.5px;
     border-radius: 2px;
-    background-color: #f6f6f6;
+    background-color: $white;
 }
 .nav-items {
     display: flex;
@@ -53,7 +53,7 @@
     justify-content: center;
 
     column-gap: 10px;
-    color: #f6f6f6;
+    color: $white;
 }
 .nav-items__cart {
     display: flex;
@@ -71,7 +71,7 @@
     top: 38px;
     right: 34px;
     font-size: 12px;
-    color: #f6f6f6;
+    color: $white;
 }
 .nav-list__wishlist {
     display: none;
@@ -103,7 +103,7 @@
     row-gap: 5px;
 }
 .shop-items > * {
-    color: #f6f6f6;
+    color: $white;
     font-weight: 500;
 }
 .nav-shop:hover .shop-items {
@@ -112,14 +112,14 @@
 .shop-items__title {
     font-size: 15px;
     font-weight: 600;
-    color:#f6f6f6;
+    color:$white;
     margin-bottom: 10px;
 }
 .shop-items__column a {
     color:rgb(232, 154, 173);
 }
 .shop-items__column a:hover {
-    color: #f6f6f6;
+    color: $white;
 }
 
 // modal user
@@ -152,15 +152,15 @@
     text-align: center;
     margin: 0 auto;
     padding: 8px 20px;
-    background-color: rgb(187, 38, 73);
-    border: 1.5px solid rgb(187, 38, 73);
+    background-color: $main;
+    border: 1.5px solid $main;
     color: #fff;
     font-weight: 500;
     transition: all 0.3s;
 }
 .login-button:hover {
     background-color: #fff;
-    color:rgb(187, 38, 73);
+    color:$main;
 }
 .section-buttons {
     display: grid;
@@ -192,7 +192,7 @@
         bottom: 0;
         left: 0;
 
-        background-color: #f6f6f6;
+        background-color: $white;
         z-index: 2;
 
         display: flex;
@@ -204,7 +204,7 @@
         font-weight: 500;
     }
     .nav-list__link {
-        color:rgb(187, 38, 73);
+        color:$main;
     }
     .nav-shop {
         display: none;

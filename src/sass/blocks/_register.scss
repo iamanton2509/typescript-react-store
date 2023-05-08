@@ -1,0 +1,44 @@
+.register {
+    margin: 10px auto;
+}
+.register__form {
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+}
+.register__title {
+    text-align: center;
+    font-weight: 600;
+    font-size: 31px;
+    color: $main;
+    margin-bottom: 12px;
+}
+.register__input {
+    display: block;
+    margin-top: 6px;
+    padding: 5px 7px;
+    border: none;
+    border-bottom: 1.5px solid $main;
+}
+.register__submit {
+    display: block;
+    padding: 9px 21px;
+    margin: 0 auto;
+    border: 1.5px solid $main;
+    background-color: #fff;
+    color: $main;
+    transition: all 0.4s ease-in-out;
+
+    &:hover {
+        color: $white;
+        background-color: $main;
+    }
+}
+.register__link {
+    font-size: 15px;
+    margin-top: 8px;
+}
+.register__error {
+    text-align: center;
+    color: $main;
+}

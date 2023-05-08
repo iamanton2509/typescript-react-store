@@ -1,5 +1,6 @@
 // Base
 @import './base/reset';
+@import './base/vars';
 @import './base/base';
 
 // Blocks
@@ -24,3 +25,5 @@
 @import './blocks/newsletter';
 @import './blocks/services';
 @import './blocks/vacancy';
+@import './blocks/user';
+@import './blocks/register';

@@ -1,6 +1,6 @@
 .accessories-title {
     font-size: 45px;
-    color: #BB2649;
+    color: $main;
     font-weight: 600;
     text-align: center;
     margin: 20px 0;
@@ -24,7 +24,7 @@
     font-weight: 500;
     line-height: 1.4;
     margin: 35px 0;
-    color: #262626;
+    color: $dark;
 }
 .title-2 {
     font-size: 45px;
@@ -62,7 +62,7 @@
     align-items: center;
     column-gap: 5px;
     font-weight: 500;
-    color: #262626;
+    color: $dark;
 }
 .cart__container {
     display: flex;

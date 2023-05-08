@@ -10,7 +10,7 @@
     font-weight: 600;
     font-size: 45px;
     text-align: center;
-    color: #BB2649;
+    color: $main;
 
     margin-bottom: 30px;
 }
@@ -29,7 +29,7 @@
 .comments {
     font-size: 45px;
     font-weight: 600;
-    color: #BB2649;
+    color: $main;
     text-align: center;
 }
 @media (max-width: 1253px) {

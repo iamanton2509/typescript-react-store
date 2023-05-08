@@ -1,7 +1,7 @@
 .wishlist {
     font-size: 45px;
     font-weight: 600;
-    color: #bb2649;
+    color: $main;
     margin-top: 10px;
 }
 .wishlist-description {
@@ -20,5 +20,5 @@
 .wishlist__info {
     font-size: 19px;
     font-weight: 600;
-    color: #bb2649;
+    color: $main;
 }

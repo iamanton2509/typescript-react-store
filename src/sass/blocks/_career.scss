@@ -25,21 +25,21 @@
     position: relative;
     width: 245px;
     padding: 10px;
-    background-color: rgb(187, 38, 73);
-    border: 1.5px solid rgb(187, 38, 73);
-    color: #f6f6f6;
+    background-color: $main;
+    border: 1.5px solid $main;
+    color: $white;
     transition: all 0.2s;
 }
 .confirm-button:hover {
-    color: #bb2649;
-    background-color: #f6f6f6;
+    color: $main;
+    background-color: $white;
 }
 /* Tooltip */
 .confirm-button .tooltiptext {
     visibility: hidden;
     width: 185px;
-    background-color: #262626;
-    color:#f6f6f6;
+    background-color: $dark;
+    color:$white;
     text-align: center;
     border-radius: 10px;
     padding: 7px 0;
@@ -58,7 +58,7 @@
     display: flex;
 }
 .page {
-    border: 1.5px solid rgb(187, 38, 73);
+    border: 1.5px solid $main;
     padding: 6px 12px;
     cursor: pointer;
 }

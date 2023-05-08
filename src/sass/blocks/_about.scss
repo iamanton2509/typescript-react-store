@@ -5,7 +5,7 @@
     text-align: center;
     font-size: 40px;
     font-weight: 600;
-    color: #BB2649;
+    color: $main;
     margin: 35px 0;
 }
 .section-content,
@@ -23,7 +23,7 @@
 }
 @media (min-width: 390px) and (max-width: 830px) {
     .title {
-        color: #BB2649;
+        color: $main;
         font-size: 45px;
     }
     .content-item__title {
@@ -38,7 +38,7 @@
 }
 @media (max-width: 390px) {
     .title {
-        color: #BB2649;
+        color: $main;
         font-size: 45px;
     }
     .content-item__title {

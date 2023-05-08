@@ -7,13 +7,12 @@ import News from './../components/News';
 import Newsletter from './../components/Newsletter';
 import Services from './../components/Services';
 import newsList from './../helpers/newsList';
-import servicesList from './../helpers/servicesList';
 import title from './../images/title.png';
 
 const Home = () => {
     const dispatch = useAppDispatch();
     const items = useAppSelector(state => state.products.products);
-    const {services, status, error} = useAppSelector(state => state.services);
+    const {services, error} = useAppSelector(state => state.services);
 
     const [products, setProducts] = useState(items);
     const [news, setNews] = useState(newsList);
