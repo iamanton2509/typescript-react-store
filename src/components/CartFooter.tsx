@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react';
-import { useAppSelector } from '../hooks/hook';
+import {useAppSelector} from '../hooks/hook';
+import {IProduct} from '../types';
 import priceFormatter from './../utils/priceFormatter';
-import { IProduct } from '../types';
 
 const CartFooter = () => {
     const products = useAppSelector(state => state.products.products);

@@ -1,4 +1,5 @@
 import {useAppSelector, useAppDispatch} from "../hooks/hook";
+import {NavLink} from "react-router-dom";
 import {userActions} from "../store/userSlice";
 
 const User = () => {
@@ -32,7 +33,12 @@ const User = () => {
             <main className="user-orders">
                     Your recent orders: 
             </main>
-            <button onClick={logout} className="user-logout">Log out from <br /> {email}</button>
+            <button 
+                onClick={logout}
+                className="user-logout"
+            >
+                <NavLink to="/">Log out from <br /> {email}</NavLink>
+            </button>
         </div>
     );
 }

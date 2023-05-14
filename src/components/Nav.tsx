@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react';
 import {NavLink} from 'react-router-dom';
-import useAuth from '../hooks/useAuth';
+import {useAppSelector} from '../hooks/hook';
 import open from './../images/icons/open.svg';
 import close from './../images/icons/close.svg';
 import heart from './../images/icons/heart.svg';
@@ -10,6 +10,7 @@ import user from './../images/icons/user.svg';
 const Nav = () => {
     const [openButton, setOpenButton] = useState(false);
     const [store, setStore] = useState(false);
+    const email = useAppSelector(state => state.user.email);
 
     const openNav = () => {
         setOpenButton(true);
@@ -25,8 +26,11 @@ const Nav = () => {
         setStore(!store);
     }
 
-    const isAuth = useAuth();
-
+    var auth = localStorage.getItem('user');
+    useEffect(() => {
+        auth = localStorage.getItem('user');
+    }, [email]);
+    
     return (
         <>
             <nav className="nav">
@@ -59,7 +63,7 @@ const Nav = () => {
                             <img src={close} alt="close" className={openButton ? 'close-button' : 'close-button none'} onClick={closeNav}/>  
                             <div className="nav-items__cart">
                                 <div>
-                                    <NavLink to={isAuth ? `/user` : `/register`}>
+                                    <NavLink to={auth ? `/user` : `/register`}>
                                         <img src={user} alt="user" />
                                     </NavLink> 
                                 </div>

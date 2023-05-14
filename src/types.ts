@@ -53,3 +53,10 @@ export interface IUser {
     id: string | null;
     token: string | null;
 }
+export interface ICart {
+    id: number;
+    title: string;
+    count: number;
+    price: number;
+    totalPrice: number;
+}

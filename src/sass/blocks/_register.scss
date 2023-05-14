@@ -24,14 +24,28 @@
     display: block;
     padding: 9px 21px;
     margin: 0 auto;
-    border: 1.5px solid $main;
-    background-color: #fff;
-    color: $main;
-    transition: all 0.4s ease-in-out;
+    border: 1.5px solid $main !important;
+    background-color: $main !important;
+    color: $white;
+    transition: all 0.3s ease-in-out;
 
     &:hover {
-        color: $white;
-        background-color: $main;
+        color: $main;
+        background-color: $white !important;
+    }
+}
+.google-button {
+    display: block;
+    padding: 9px 21px;
+    margin: 3.5px auto;
+    background-color: rgb(251, 188, 5) !important;
+    border: 1.5px solid rgb(251, 188, 5);
+    color: $white;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+        color: rgb(251,188,5);
+        background-color: $white !important;
     }
 }
 .register__link {

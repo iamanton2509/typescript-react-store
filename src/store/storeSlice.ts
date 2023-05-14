@@ -56,7 +56,6 @@ const storeSlice = createSlice({
             }
         },
         addToWishlist (state, action: PayloadAction<number>) {
-            console.log(action.payload);
             const wishedProduct = state.products.find(product => product.id === action.payload);
             if (wishedProduct) {
                 wishedProduct.wishlist = !wishedProduct.wishlist;

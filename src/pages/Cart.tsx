@@ -1,16 +1,15 @@
 import {useState, useEffect} from 'react';
 import {useAppDispatch, useAppSelector} from '../hooks/hook';
+import {NavLink} from 'react-router-dom';
 import {sortProducts} from './../store/storeSlice';
-
+import {getFirestore, collection, getDocs, addDoc} from 'firebase/firestore';
 import Title from './../components/Title';
 import CartHeader from './../components/CartHeader';
 import CartProducts from './../components/CartProducts';
 import CartFooter from './../components/CartFooter';
 import ButtonOrder from './../components/ButtonOrder';
 import MyModal from './../components/UI/modal/MyModal';
-import MyInput from './../components/UI/input/MyInput';
 import MySelect from './../components/UI/select/MySelect';
-
 import mastercard from './../images/icons/payment-icons/Mastercard.svg';
 import visa from './../images/icons/payment-icons/Visa.svg';
 import applepay from './../images/icons/payment-icons/ApplePay.svg';
@@ -31,94 +30,48 @@ const Cart = () => {
 
     const [modal, setModal] = useState(false);
 
-    /* Form validation */
-    const [formValid, setFormValid] = useState(false);
-    const [inputs, setInputs] = useState({firstname: '', lastname: '', email: '', phone: ''});
-
-    const [firstNameDirty, setFirstNameDirty] = useState(false);
-    const [lastNameDirty, setLastNameDirty] = useState(false);
-    const [emailDirty, setEmailDirty] = useState(false);
-    const [phoneDirty, setPhoneDirty] = useState(false);
-
-    const [firstNameError, setFirstNameError] = useState("This field can't be empty");
-    const [lastNameError, setLastNameError] = useState("This field can't be empty");
-    const [emailError, setEmailError] = useState("This field can't be empty");
-    const [phoneError, setPhoneError] = useState("This field can't be empty");
-
-    const blurHandler = (e: React.FocusEvent<HTMLInputElement>) => {
-        switch (e.target.name) {
-            case 'name':
-                setFirstNameDirty(true);
-                break;
-            case 'phone':
-                setLastNameDirty(true);
-                break;
-            case 'email':
-                setEmailDirty(true);
-                break;
-            case 'text':
-                setPhoneDirty(true);
-                break;
-        }
-    }
-
-    const firstNameHandler: React.FormEventHandler<HTMLInputElement> = (e) => {
-        const target = e.target as HTMLInputElement;
-        setInputs({...inputs, firstname: target.value});
-        if (Number.isInteger(Number(target.value))) {
-            setFirstNameError("Your firstname must be a string");
-        } else if (target.value.length < 2) {
-            setFirstNameError("Your firstname must be longer than 1 letter");
-        } else {
-            setFirstNameError("");
-        }
-    }
-
-    const lastNameHandler: React.FormEventHandler<HTMLInputElement> = (e) => {
-        const target = e.target as HTMLInputElement;
-        setInputs({...inputs, lastname: target.value});
-        if (Number.isInteger(Number(target.value))) {
-            setLastNameError("Your lastname must be a string");
-        } else if (target.value.length < 2) {
-            setLastNameError("Your lastname must be longer than 1 letter")
-        }
-    }
-
-    const emailHandler: React.FormEventHandler<HTMLInputElement> = (e) => {
-        const target = e.target as HTMLInputElement;
-        setInputs({...inputs, email: target.value});
-        const re = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-        if (!re.test(String(target.value).toLowerCase())) {
-            setEmailError("Invalid email");
-        } else {
-            setEmailError("");
-        }
-    }
-
-    const phoneHandler: React.FormEventHandler<HTMLInputElement> = (e) => {
-        const target = e.target as HTMLInputElement;
-        setInputs({...inputs, phone: target.value});
-        const re = /([0-9]+(-[0-9]+)+)/;
-        if (!re.test(String(target.value).toLowerCase())) {
-            setPhoneError("Invalid phone number");
-        } else {
-            setPhoneError("");
-        }
-    }
-
-    useEffect(() => {
-        if (firstNameError || lastNameError || emailError || phoneError) {
-            setFormValid(false);
-        } else {
-            setFormValid(true);
-        }
-    });
-
     let counter = 0;
     for (let i = 0; i < items.length; i++) {
         if (items[i].cart) {
             counter += 1;
         }
+    }
+
+    const productsInCart = items.filter(product => product.cart);
+
+    const [total, setTotal] = useState({
+        count: productsInCart.reduce((previous, current) => previous + current.count, 0),
+        price: productsInCart.reduce((previous, current) => previous + current.totalPrice, 0)
+    });
+
+    useEffect(() => {
+        setTotal({
+            count: productsInCart.reduce((previous, current) => previous + current.count, 0),
+            price: productsInCart.reduce((previous, current) => previous + current.totalPrice, 0)
+        })
+    }, [items]);
+
+    const db = getFirestore();
+    const email = JSON.parse(String(localStorage.getItem('user'))).email;
+
+    const createOrder = async () => {
+        try {
+            const orderRef = collection(db, 'orders');
+            const newOrderDoc = await addDoc(orderRef, {
+                email: email,
+                totalPrice: total.price,
+                totalCount: total.count,
+                products: productsInCart
+            });
+            return newOrderDoc.id;
+        } catch (error: any) {
+            console.error(error.message);
+        }
+    };
+
+    const handleOrder = () => {
+        createOrder();
+        setModal(true)
     }
 
     return (
@@ -135,7 +88,7 @@ const Cart = () => {
                         {value: 'price-ascending', name: 'Sort by price - ascending'},
                         {value: 'price-descending', name: 'Sort by price - descending'},
                         {value: 'title', name: 'Sort by name'}
-                    ]} defaultValue="Sort by" /> }
+                    ]} defaultValue='Sort by' /> }
                 </div>
                 <div className="section-cart__body">
                     <div className="cart-container">
@@ -159,73 +112,64 @@ const Cart = () => {
                         {counter !== 0 && <CartFooter />}
 
                         {counter !== 0 &&
-                        <ButtonOrder onClick={() => setModal(true)} />
+                            <ButtonOrder onClick={handleOrder} />
                         }
-
-                        <MyModal visible={modal} setVisible={setModal}>
-                            <div className="modal-content">
-                                <h3 className="modal-content__title">Fill the form to make an order</h3>
-                                <div className="modal-content__input">
-                                    {(firstNameDirty && firstNameError) && <div className="error">{firstNameError}</div>}
-                                    <MyInput
-                                        value={inputs.firstname}
-                                        onChange={(e) => firstNameHandler(e)}
-                                        onBlur={(e) => blurHandler(e)}
-                                        type="text"
-                                        name="firstname" 
-                                        placeholder="Your firstname"  
-                                    />
-                                    {(lastNameDirty && lastNameError) && <div className="error">{lastNameError}</div>}
-                                    <MyInput 
-                                        value={inputs.lastname}
-                                        onChange={(e) => lastNameHandler(e)}
-                                        onBlur={(e) => blurHandler(e)}
-                                        type="text"
-                                        name="lastname" 
-                                        placeholder="Your lastname" 
-                                    />
-                                    {(emailDirty && emailError) && <div className="error">{emailError}</div>}
-                                    <MyInput 
-                                        value={inputs.email}
-                                        onChange={(e) => emailHandler(e)}
-                                        onBlur={(e) => blurHandler(e)}
-                                        type="text" 
-                                        name="email"
-                                        placeholder="Your email" 
-                                    />
-                                    {(phoneDirty && phoneError) && <div className="error">{phoneError}</div>}
-                                    <MyInput
-                                        value={inputs.phone} 
-                                        onChange={(e) => phoneHandler(e)}
-                                        onBlur={(e) => blurHandler(e)}
-                                        type="text"
-                                        name="phone" 
-                                        placeholder="Your number" 
-                                    />
-                                </div>
-                                <h3 className="modal-content__title">Pick payment</h3>
-                                <div className="modal-content__payment">
-                                    <button disabled={!formValid} className="payment-btn">
+                        {localStorage.getItem('user') 
+                        ? <MyModal visible={modal} setVisible={setModal}>
+                                <div className="modal-content">
+                                    <h3 className="modal-content__title">Success! Our manager is contacting you soon</h3>
+                                    <div className="modal-content__input">
+                                        <p className="modal-content__header">Your order</p> 
+                                        <table>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Count</th>
+                                                <th>Price</th>
+                                            </tr>  
+                                        {productsInCart.map(item => 
+                                            <tr>
+                                                <td>{item.title}</td>
+                                                <td>{item.count}</td>
+                                                <td>{item.price}</td>
+                                            </tr>
+                                        )} 
+                                        <tr>
+                                            <th>Result</th>
+                                            <th>{total.count}</th>
+                                            <th>{total.price}</th>
+                                        </tr>
+                                        </table> 
+                                    </div>
+                                    <h3 className="modal-content__title">You can make a payment with</h3>
+                                    <div className="modal-content__payment">
+                                    <button className="payment-btn">
                                         <img src={mastercard} />
                                     </button>
-                                    <button disabled={!formValid} className="payment-btn">
+                                    <button className="payment-btn">
                                         <img src={visa} />
                                     </button>
-                                    <button disabled={!formValid} className="payment-btn">
+                                    <button className="payment-btn">
                                         <img src={applepay} />
                                     </button>
-                                    <button disabled={!formValid} className="payment-btn">
+                                    {/* <button  className="payment-btn">
                                         <img src={googlepay} />
                                     </button>
-                                    <button disabled={!formValid} className="payment-btn">
+                                    <button className="payment-btn">
                                         <img src={paypal} />
                                     </button>
-                                    <button disabled={!formValid} className="payment-btn">
+                                    <button className="payment-btn">
                                         <img src={amazon} />
-                                    </button>
+                                    </button> */}
                                 </div>
                             </div>
                         </MyModal>
+                        : <MyModal visible={modal} setVisible={setModal}>
+                            <div className="modal-content">
+                                <h1>You have to be signed in to make orders</h1>
+                                <p><NavLink to="/login">Log In </NavLink> <NavLink to="/register">Register</NavLink></p>
+                            </div>
+                        </MyModal>
+                        }
                     </div>
                 </div>
             </section>

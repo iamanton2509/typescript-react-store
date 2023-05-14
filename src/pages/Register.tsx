@@ -14,7 +14,7 @@ const Register = () => {
     });
     const dispatch = useAppDispatch();
 
-    const onSubmit = async (data: any) => {
+    const onSubmit = async (data: IRegister) => {
         const auth = getAuth();
         reset();
         try {
@@ -26,8 +26,7 @@ const Register = () => {
                 firstname: data.firstname,
                 lastname: data.lastname
             };
-            const userDataJSON = JSON.stringify(userData);
-            localStorage.setItem('user', userDataJSON);
+            localStorage.setItem('user', JSON.stringify(userData));
             const db = getFirestore();
             const userRef = doc(db, 'users', user.uid);
             setDoc(userRef, {
@@ -38,6 +37,29 @@ const Register = () => {
             console.error(error.message);
         }
     }   
+
+    const handleGoogleSignIn = async () => {
+        try {
+            const auth = getAuth();
+            const provider = new GoogleAuthProvider();
+            const result = await signInWithPopup(auth, provider);
+            const user = result.user;
+            const userData = {
+                email: user.email,
+                id: user.uid,
+                token: user.refreshToken,
+                firstname: user.displayName,
+                lastname: ''
+            }
+            localStorage.setItem('user', JSON.stringify(userData));
+            dispatch(userActions.setUser(userData));
+            const db = getFirestore();
+            const userRef = doc(db, 'users', user.uid);
+            await setDoc(userRef, userData);
+        } catch (error: any){
+            console.log(error.message);
+        }
+    }
 
     return (
         <div className="container">
@@ -98,6 +120,7 @@ const Register = () => {
                     />
                     {errors?.password && <small className="register__error">{errors?.password?.message || 'Error'}</small>}
                     <input type='submit' disabled={!isValid} className="register__submit" value="Register" />
+                    <button onClick={handleGoogleSignIn} className="google-button">Continue with Google</button>
                 </form>
                 <p className="register__link">Already have an account? <NavLink to="/login">Sign in</NavLink></p>
             </section>
