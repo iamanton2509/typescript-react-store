@@ -3,6 +3,7 @@ import {useAppDispatch, useAppSelector} from '../hooks/hook';
 import {NavLink} from 'react-router-dom';
 import {sortProducts} from './../store/storeSlice';
 import {getFirestore, collection, getDocs, addDoc} from 'firebase/firestore';
+import useAuth from './../hooks/useAuth';
 import Title from './../components/Title';
 import CartHeader from './../components/CartHeader';
 import CartProducts from './../components/CartProducts';
@@ -13,9 +14,7 @@ import MySelect from './../components/UI/select/MySelect';
 import mastercard from './../images/icons/payment-icons/Mastercard.svg';
 import visa from './../images/icons/payment-icons/Visa.svg';
 import applepay from './../images/icons/payment-icons/ApplePay.svg';
-import googlepay from './../images/icons/payment-icons/GooglePay.svg';
 import paypal from './../images/icons/payment-icons/PayPal.svg';
-import amazon from './../images/icons/payment-icons/AmazonPay.svg';
 
 const Cart = () => {  
     const items = useAppSelector(state => state.products.products);
@@ -52,7 +51,12 @@ const Cart = () => {
     }, [items]);
 
     const db = getFirestore();
-    const email = JSON.parse(String(localStorage.getItem('user'))).email;
+
+    const {isAuth} = useAuth();
+    let email = '';
+    if (isAuth) {
+        email = JSON.parse(String(localStorage.getItem('user'))).email;
+    }
 
     const createOrder = async () => {
         try {
@@ -142,31 +146,28 @@ const Cart = () => {
                                     </div>
                                     <h3 className="modal-content__title">You can make a payment with</h3>
                                     <div className="modal-content__payment">
-                                    <button className="payment-btn">
-                                        <img src={mastercard} />
-                                    </button>
-                                    <button className="payment-btn">
-                                        <img src={visa} />
-                                    </button>
-                                    <button className="payment-btn">
-                                        <img src={applepay} />
-                                    </button>
-                                    {/* <button  className="payment-btn">
-                                        <img src={googlepay} />
-                                    </button>
-                                    <button className="payment-btn">
-                                        <img src={paypal} />
-                                    </button>
-                                    <button className="payment-btn">
-                                        <img src={amazon} />
-                                    </button> */}
+                                        <button className="payment-btn">
+                                            <img src={mastercard} />
+                                        </button>
+                                        <button className="payment-btn">
+                                            <img src={visa} />
+                                        </button>
+                                        <button className="payment-btn">
+                                            <img src={applepay} />
+                                        </button>
+                                        <button className="payment-btn">
+                                            <img src={paypal} />
+                                        </button>
                                 </div>
                             </div>
                         </MyModal>
                         : <MyModal visible={modal} setVisible={setModal}>
                             <div className="modal-content">
-                                <h1>You have to be signed in to make orders</h1>
-                                <p><NavLink to="/login">Log In </NavLink> <NavLink to="/register">Register</NavLink></p>
+                                <h1 className="modal-content__info-title">You have to be signed in to make orders</h1>
+                                <div className="modal-content__info">
+                                    <NavLink to="/login" className="modal-content__login">Log In</NavLink>
+                                    <NavLink to="/register" className="modal-content__register">Register</NavLink>
+                                </div>
                             </div>
                         </MyModal>
                         }

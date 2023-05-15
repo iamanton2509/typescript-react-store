@@ -1,5 +1,5 @@
-import {useState, useEffect} from 'react';
-import {NavLink} from 'react-router-dom';
+import {useState} from 'react';
+import {NavLink, Link} from 'react-router-dom';
 import {useAppSelector} from '../hooks/hook';
 import open from './../images/icons/open.svg';
 import close from './../images/icons/close.svg';
@@ -25,11 +25,6 @@ const Nav = () => {
     const togglestore = () => {
         setStore(!store);
     }
-
-    var auth = localStorage.getItem('user');
-    useEffect(() => {
-        auth = localStorage.getItem('user');
-    }, [email]);
     
     return (
         <>
@@ -63,16 +58,15 @@ const Nav = () => {
                             <img src={close} alt="close" className={openButton ? 'close-button' : 'close-button none'} onClick={closeNav}/>  
                             <div className="nav-items__cart">
                                 <div>
-                                    <NavLink to={auth ? `/user` : `/register`}>
+                                    <Link to="/user">
                                         <img src={user} alt="user" />
-                                    </NavLink> 
+                                    </Link> 
                                 </div>
                                 <NavLink to="/wishlist">
                                     <img src={heart} alt="wishlist" />
                                 </NavLink>
                                 <NavLink to="/cart">
                                     <img src={cart} alt="cart" />
-                                    {/* <p className="nav-items__cart-title">{total}</p> */}
                                 </NavLink>
                             </div>
                         </div>

@@ -30,6 +30,8 @@
 
     &:hover {
         background-color: $white;
+    }
+    &:hover a {
         color: $main;
     }
 

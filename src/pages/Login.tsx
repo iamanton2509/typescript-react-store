@@ -1,5 +1,5 @@
 import {useForm} from 'react-hook-form';
-import {NavLink} from 'react-router-dom';
+import {NavLink, useNavigate, useLocation} from 'react-router-dom';
 import {getAuth, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider} from 'firebase/auth';
 import {getFirestore, setDoc, doc} from 'firebase/firestore';
 import {useAppDispatch} from '../hooks/hook';
@@ -13,6 +13,12 @@ const Login = () => {
         mode: "onBlur"
     });
     const dispatch = useAppDispatch();
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const fromPage = location.state?.from?.pathname || '/';
+
+    const goUser = () => navigate('/user');
 
     const onSubmit = (data: PersonWithoutEmail) => {
         const auth = getAuth();
@@ -27,6 +33,7 @@ const Login = () => {
                 }));
                 localStorage.setItem('user', JSON.stringify(user));
                 reset();
+                goUser();
             })
             .catch(() => alert('Wrong data'));
     }
@@ -49,6 +56,7 @@ const Login = () => {
             const db = getFirestore();
             const userRef = doc(db, 'users', user.uid);
             await setDoc(userRef, userData);
+            goUser();
         } catch (error: any){
             console.log(error.message);
         }

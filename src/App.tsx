@@ -20,6 +20,7 @@ import Question from './pages/Question';
 import Privacy from './pages/Privacy';
 import About from './pages/About';
 import Footer from './components/Footer';
+import RequireAuth from './hoc/RequireAuth';
 import {userActions} from './store/userSlice';
 import ScrollToTop from './utils/ScrollToTop';
 import './css/style.css';
@@ -66,60 +67,37 @@ const App = () => {
     } 
     someOtherFunction();
 
-    if (localStorage.getItem('user')){
-        return (
-            <Router>
-                <ScrollToTop />
-                <Nav />
-                    <Routes>  
-                        <Route path="/" element={<Home /> } />
-                        <Route path="/products" element={<Products />} />
-                        <Route path="/shop/:name" element={<Store myUkrainianArray={myUkrainianArray} />} />
-                        <Route path="/accessories/:name" element={<Accessories myUkrainianArray={myUkrainianArray} />} />
-                        <Route path="/accessory/:id" element={<Accessory myUkrainianArray={myUkrainianArray} />} />
-                        <Route path="/user" element={<User />} />
-                        <Route path="/about" element={<About />} />
-                        <Route path="/cart" element={<Cart />} />                     
-                        <Route path="/news/:id" element={<NewsPage />} />     
-                        <Route path="/product/:id" element={<Product myUkrainianArray={myUkrainianArray} />} />
-                        <Route path="/wishlist" element={<Wishlist />} />
-                        <Route path="/career" element={<Career />} />
-                        <Route path="/contacts" element={<Contacts />} />
-                        <Route path="/question" element={<Question />} />
-                        <Route path="/privacy" element={<Privacy />} /> 
-                        <Route path="*" element={<Navigate to="/" />} />           
-                    </Routes>
-                <Footer />
-            </Router>
-        );
-    } else {
-        return (
-            <Router>
-                <ScrollToTop />
-                <Nav />
-                    <Routes>  
-                        <Route path="/" element={<Home /> } />
-                        <Route path="/products" element={<Products />} />
-                        <Route path="/shop/:name" element={<Store myUkrainianArray={myUkrainianArray} />} />
-                        <Route path="/accessories/:name" element={<Accessories myUkrainianArray={myUkrainianArray} />} />
-                        <Route path="/accessory/:id" element={<Accessory myUkrainianArray={myUkrainianArray} />} />
-                        <Route path="/register" element={<Register />} />
-                        <Route path="/login" element={<Login />} />
-                        <Route path="/about" element={<About />} />
-                        <Route path="/cart" element={<Cart />} />                     
-                        <Route path="/news/:id" element={<NewsPage />} />     
-                        <Route path="/product/:id" element={<Product myUkrainianArray={myUkrainianArray} />} />
-                        <Route path="/wishlist" element={<Wishlist />} />
-                        <Route path="/career" element={<Career />} />
-                        <Route path="/contacts" element={<Contacts />} />
-                        <Route path="/question" element={<Question />} />
-                        <Route path="/privacy" element={<Privacy />} /> 
-                        <Route path="*" element={<Navigate to="/register" />} />           
-                    </Routes>
-                <Footer />
-            </Router>
-        );
-    }
+    return (
+        <Router>
+            <ScrollToTop />
+            <Nav />
+            <Routes>  
+                <Route path="/" element={<Home /> } />
+                <Route path="/products" element={<Products />} />
+                <Route path="/shop/:name" element={<Store myUkrainianArray={myUkrainianArray} />} />
+                <Route path="/accessories/:name" element={<Accessories myUkrainianArray={myUkrainianArray} />} />
+                <Route path="/accessory/:id" element={<Accessory myUkrainianArray={myUkrainianArray} />} />
+                <Route path="/register" element={<Register />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/user" element={
+                    <RequireAuth>
+                        <User />
+                    </RequireAuth>
+                } />
+                <Route path="/about" element={<About />} />
+                <Route path="/cart" element={<Cart />} />                     
+                <Route path="/news/:id" element={<NewsPage />} />     
+                <Route path="/product/:id" element={<Product myUkrainianArray={myUkrainianArray} />} />
+                <Route path="/wishlist" element={<Wishlist />} />
+                <Route path="/career" element={<Career />} />
+                <Route path="/contacts" element={<Contacts />} />
+                <Route path="/question" element={<Question />} />
+                <Route path="/privacy" element={<Privacy />} /> 
+                <Route path="*" element={<Navigate to="/register" />} />           
+            </Routes>
+            <Footer />
+        </Router>
+    );
 }
 
 export default App;

@@ -1,5 +1,5 @@
 import {useAppSelector, useAppDispatch} from "../hooks/hook";
-import {NavLink} from "react-router-dom";
+import {NavLink, useNavigate} from "react-router-dom";
 import {userActions} from "../store/userSlice";
 
 const User = () => {
@@ -20,8 +20,11 @@ const User = () => {
 
     const {email, firstname, lastname} = useAppSelector(state => state.user);
 
+    const navigate = useNavigate();
+
     const logout = () => {
         dispatch(userActions.removeUser());
+        navigate('/', {replace: true});
     }
 
     return (
@@ -37,7 +40,7 @@ const User = () => {
                 onClick={logout}
                 className="user-logout"
             >
-                <NavLink to="/">Log out from <br /> {email}</NavLink>
+                Log out from <br /> {email}
             </button>
         </div>
     );

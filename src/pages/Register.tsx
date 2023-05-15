@@ -1,5 +1,5 @@
 import {useForm} from 'react-hook-form';
-import {NavLink} from 'react-router-dom';
+import {NavLink, useNavigate, useLocation} from 'react-router-dom';
 import {getAuth, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider} from 'firebase/auth';
 import {getFirestore, setDoc, doc} from 'firebase/firestore';
 import {useAppDispatch} from '../hooks/hook';
@@ -13,6 +13,10 @@ const Register = () => {
         mode: "onBlur"
     });
     const dispatch = useAppDispatch();
+    
+    const location = useLocation(); // Объект локации
+    const fromPage = location.state?.from?.pathname || '/';
+    const navigate = useNavigate(); // Navigate
 
     const onSubmit = async (data: IRegister) => {
         const auth = getAuth();
@@ -33,6 +37,7 @@ const Register = () => {
                 userData
             });
             dispatch(userActions.setUser(userData));
+            navigate(fromPage, {replace: true});
         } catch(error: any) {
             console.error(error.message);
         }
@@ -55,6 +60,7 @@ const Register = () => {
             dispatch(userActions.setUser(userData));
             const db = getFirestore();
             const userRef = doc(db, 'users', user.uid);
+            navigate(fromPage, {replace: true});
             await setDoc(userRef, userData);
         } catch (error: any){
             console.log(error.message);
