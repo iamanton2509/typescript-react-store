@@ -2039,4 +2039,18 @@ textarea {
   color: rgb(187, 38, 73);
 }
 
+.countdown {
+  margin: 20px auto;
+}
+.countdown p {
+  color: rgb(187, 38, 73);
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.2;
+  text-align: center;
+}
+.countdown span {
+  color: hsl(0deg, 0%, 15%);
+}
+
 /*# sourceMappingURL=style.css.map */

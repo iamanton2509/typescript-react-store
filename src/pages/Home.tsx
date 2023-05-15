@@ -6,6 +6,7 @@ import Product from './../components/Product';
 import News from './../components/News';
 import Newsletter from './../components/Newsletter';
 import Services from './../components/Services';
+import Countdown from '../components/Countdown';
 import newsList from './../helpers/newsList';
 import title from './../images/title.png';
 
@@ -39,6 +40,7 @@ const Home = () => {
 
                 <section className="section-sale">
                     <h1 className="section-sale__title"><span style={{color: '#BB2649'}}>Order now</span> and get <span style={{color: '#BB2649'}}>20%</span> off</h1>
+                    <Countdown />
                     <ul className="section-sale__products">
                         {products.map((product) => {
                             if (product.sale) {

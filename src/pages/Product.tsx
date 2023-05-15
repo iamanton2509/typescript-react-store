@@ -2,10 +2,8 @@ import {useState, useEffect} from 'react';
 import {useParams} from 'react-router-dom';
 import {useAppDispatch, useAppSelector} from '../hooks/hook';
 import {addProductToCart} from './../store/storeSlice';
-
 import MyModal from './../components/UI/modal/MyModal';
 import MyInput from './../components/UI/input/MyInput';
-
 import unitedstates from './../images/icons/unitedstates.svg';
 import ukraine from './../images/icons/ukraine.svg';
 
